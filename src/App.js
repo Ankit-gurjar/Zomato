@@ -1,9 +1,14 @@
 import "./App.css";
+import Homepage from "./Pages/Homepage";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <Routes>
+        <Route path="/" element={<Homepage />} exact />
+        {/* <Route path="/images" component={Imagepage} /> */}
+      </Routes>
     </div>
   );
 }
