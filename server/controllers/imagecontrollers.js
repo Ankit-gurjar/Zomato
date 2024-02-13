@@ -1,5 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
-const User = require("../models/userModel");
+const User = require("../models/usermodel");
 const { use } = require("../routes/userRoute");
 
 const uploadimage = expressAsyncHandler(async (req, res) => {

@@ -7,12 +7,12 @@ import { useEffect, useState } from "react";
 // import ChatLoading from "./ChatLoading";
 // import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Button } from "@chakra-ui/react";
-// import { ChatState } from "../Context/ChatProvider";
+// import { ImageState } from "../Context/ChatProvider";
 
 const MyImages = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
 
-  //   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+  // const { selectedChat, setSelectedChat, user, chats, setChats } = ImageState();
 
   const toast = useToast();
 
@@ -39,11 +39,11 @@ const MyImages = ({ fetchAgain }) => {
   //     }
   //   };
 
-  //   useEffect(() => {
-  //     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-  //     fetchChats();
-  //     // eslint-disable-next-line
-  //   }, [fetchAgain]);
+  useEffect(() => {
+    setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    // fetchChats();
+    // eslint-disable-next-line
+  }, [fetchAgain]);
 
   return (
     <Box
