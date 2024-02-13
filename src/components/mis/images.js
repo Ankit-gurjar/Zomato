@@ -3,10 +3,7 @@ import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { getSender } from "../config/ChatLogics";
-// import ChatLoading from "./ChatLoading";
-// import GroupChatModal from "./miscellaneous/GroupChatModal";
-import { Button } from "@chakra-ui/react";
+import { Button, Image } from "@chakra-ui/react";
 import { ImageState } from "../Context/imageProvider";
 
 const MyImages = ({ fetchAgain }) => {
@@ -26,7 +23,9 @@ const MyImages = ({ fetchAgain }) => {
       };
 
       const { data } = await axios.get("/api/v1/images", config);
+      // console.log(data);
       setImages(data);
+      // console.log(images);
     } catch (error) {
       console.log(error.message);
       toast({
@@ -79,19 +78,13 @@ const MyImages = ({ fetchAgain }) => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {/* {chats ? ( */}
         <Stack overflowY="scroll">
-          {/* {chats.map((chat) => ( */}
-          <Box
-            //   onClick={() => setSelectedChat(chat)}
-            cursor="pointer"
-            //   bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-            //   color={selectedChat === chat ? "white" : "black"}
-            px={3}
-            py={2}
-            borderRadius="lg"
-            //   key={chat._id}
-          ></Box>
+          {images &&
+            images?.map((image) => (
+              <Box cursor="pointer" px={3} py={2} borderRadius="lg" key={image}>
+                <Image src={images[0]} />
+              </Box>
+            ))}
         </Stack>
       </Box>
     </Box>
