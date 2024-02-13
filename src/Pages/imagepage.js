@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useToast } from "@chakra-ui/toast";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { ImageState } from "../components/Context/imageProvider";
 
 const Imagepage = () => {
   const toast = useToast();
@@ -67,6 +68,7 @@ const Imagepage = () => {
       const config = {
         headers: {
           "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`,
         },
       };
       const { data } = await axios.post(
@@ -86,7 +88,7 @@ const Imagepage = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      history.push("/images");
+      // history.push("/images");
     } catch (error) {
       toast({
         title: "Error Occured!",
@@ -99,6 +101,8 @@ const Imagepage = () => {
       setPicLoading(false);
     }
   };
+  const [fetchAgain, setFetchAgain] = useState(false);
+  const { user } = ImageState();
 
   return (
     <Container maxW="2xl">
@@ -130,7 +134,8 @@ const Imagepage = () => {
           Upload Image
         </Button>
       </Box>
-      <MyImages minW="2xl" />
+
+      {user && <MyImages fetchAgain={fetchAgain} />}
     </Container>
   );
 };

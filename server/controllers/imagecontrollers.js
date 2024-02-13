@@ -3,11 +3,11 @@ const User = require("../models/usermodel");
 const { use } = require("../routes/userRoute");
 
 const uploadimage = expressAsyncHandler(async (req, res) => {
-  const { image_url } = req.body;
-  //   console.log(image_url);
+  const { pic } = req.body;
+  const image_url = pic;
+
   const userid = req.user.id;
 
-  //   console.log(req.user);
   if (!image_url || !userid) {
     console.log("Invalid data passed into request");
     return res.sendStatus(400);

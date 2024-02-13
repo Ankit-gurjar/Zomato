@@ -5,6 +5,7 @@ const ImageContext = createContext();
 
 const ImageProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [images, setImages] = useState();
 
   const history = useNavigate();
 
@@ -20,6 +21,8 @@ const ImageProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        images,
+        setImages,
       }}
     >
       {children}
