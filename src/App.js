@@ -1,5 +1,6 @@
 import "./App.css";
 import Homepage from "./Pages/Homepage";
+import Imagepage from "./Pages/imagepage";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Homepage />} exact />
-        {/* <Route path="/images" component={Imagepage} /> */}
+        <Route path="/images" element={<Imagepage />} />
       </Routes>
     </div>
   );
