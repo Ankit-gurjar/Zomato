@@ -56,7 +56,7 @@ const Login = () => {
       setUser(data);
       localStorage.setItem("userInfo", JSON.stringify(data));
       setLoading(false);
-      // history.push("/images");
+      history("/images");
     } catch (error) {
       toast({
         title: "Error Occured!",

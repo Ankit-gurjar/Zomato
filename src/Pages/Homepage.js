@@ -11,8 +11,18 @@ import {
 import React from "react";
 import Login from "../components/authentication/login";
 import Signup from "../components/authentication/signup";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Homepage() {
+  const history = useNavigate();
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) history("/images");
+  }, [history]);
+
   return (
     <Container maxW="xl" centerContent>
       <Box

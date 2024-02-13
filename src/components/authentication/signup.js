@@ -45,6 +45,8 @@ const Signup = () => {
         isClosable: true,
         position: "bottom",
       });
+      setPicLoading(false);
+
       return;
     }
     console.log(name, email, password, pic);
@@ -74,7 +76,7 @@ const Signup = () => {
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
       setPicLoading(false);
-      history.push("/images");
+      history("/images");
     } catch (error) {
       toast({
         title: "Error Occured!",

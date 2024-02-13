@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ImageContext = createContext();
 
 const ImageProvider = ({ children }) => {
-  const [selectedChat, setSelectedChat] = useState();
   const [user, setUser] = useState();
-  const [notification, setNotification] = useState([]);
-  const [chats, setChats] = useState();
 
   const history = useNavigate();
 
@@ -15,7 +12,7 @@ const ImageProvider = ({ children }) => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
     setUser(userInfo);
 
-    if (!userInfo) history.push("/");
+    if (!userInfo) history("/");
   }, [history]);
 
   return (
